@@ -4,4 +4,4 @@ This script is intended solely for authorized penetration testing engagements wi
 
 Prerequisites: NetExec must be installed on your Debian/Kali machine. You must create a file with the list of IPs, usernames, and passwords that will be tested. The username and password combinations should be on the same line in users.txt and in passwords.txt, unless -a flag is used to test every username with every password.
 
-Usage: ./netexec_credential_spray.sh [-a] [-v] [-s] -a: Test every username with every password. -v: Verbose mode. Print debug statements. -s: Suppress success messages.
+Usage: ./netexec_credential_spray.sh [-a] [-v] [-s] -a: Test every username with every password. -v: Verbose mode. Print debug statements. -s: Suppress success messages. -p: Use proxychains for the connections.
