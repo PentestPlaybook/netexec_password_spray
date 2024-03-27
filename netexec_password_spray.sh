@@ -152,4 +152,10 @@ else
             perform_check winrm $ip "$user" "$pass" "-x whoami"
         done < "$IP_LIST"
     done
+
+# Print the file name with the CSV data
+if [ "$SUPPRESS_SUCCESS" = false ]; then
+    echo "Data was saved in the CSV file: $RESULTS_CSV"
+fi
+
 fi
