@@ -95,9 +95,14 @@ perform_check() {
             command="$proxy_prefix hydra -l \"$username\" -p \"$pass\" -t 4 $service://$ip $extra_args"
             ;;
         smb|winrm)
-            command="$proxy_prefix /home/kali/.local/bin/nxc $service $ip -u \"$username\" -p \"$pass\" $extra_args"
+            command="$proxy_prefix nxc $service $ip -u \"$username\" -p \"$pass\" $extra_args"
             ;;
     esac
+
+    # Debug: Print the command being executed
+    if [ "$VERBOSE" = true ]; then
+        echo "Executing command: $command"
+    fi
 
     eval $command > "$temp_output" 2>&1
 
@@ -110,7 +115,6 @@ perform_check() {
             log_command="${proxy_prefix} xfreerdp /cert-ignore /compression /auto-reconnect /u:$username /p:'$pass' /v:$ip"
             ;;
         smb)
-            # Updated smbclient command with domain
             log_command="${proxy_prefix} smbclient \\\\\\\\$ip\\\\C -U '${username}%$pass' -W $DOMAIN"
             ;;
         winrm)
