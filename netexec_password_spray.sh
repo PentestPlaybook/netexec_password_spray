@@ -92,10 +92,10 @@ perform_check() {
 
     case "$service" in
         ssh|rdp)
-            command="$proxy_prefix hydra -l \"$username\" -p \"$pass\" -t 4 $service://$ip $extra_args"
+            command="$proxy_prefix hydra -l \"$username\" -p '$pass' -t 4 $service://$ip $extra_args"
             ;;
         smb|winrm)
-            command="$proxy_prefix nxc $service $ip -u \"$username\" -p \"$pass\" $extra_args"
+            command="$proxy_prefix nxc $service $ip -u \"$username\" -p '$pass' $extra_args"
             ;;
     esac
 
